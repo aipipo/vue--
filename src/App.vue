@@ -1,16 +1,14 @@
 <template>
-  <div>
-    <div class="btn"></div>
+  <div class="app">
+    <router-view />
   </div>
-  
 </template>
 <script>
 export default {}
 </script>
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   @import './common/stylus/mixins.styl'
-  .btn
-    width px2rem(200)
-    height px2rem(300)
-    background-color red
+  .app
+    width 100%
+    height 100%
 </style>
