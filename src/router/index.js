@@ -11,6 +11,7 @@ import PersonalPages from '../pages/PersonalPages/PersonalPages'
 Vue.use(VueRouter)
 
 export default new VueRouter({
+  mode: 'history',
   routes: [
     {
       path: '/first',
@@ -18,23 +19,38 @@ export default new VueRouter({
     },
     {
       path: '/home',
-      component: HomePages
+      component: HomePages,
+      meta: {
+        showFooter: true
+      }
     },
     {
       path: '/classify',
-      component: ClassifyPages
+      component: ClassifyPages,
+      meta: {
+        showFooter: true
+      }
     },
     {
       path: '/share',
-      component: SharePages
+      component: SharePages,
+      meta: {
+        showFooter: true
+      }
     },
     {
       path: '/shopping',
-      component: ShoppingPages
+      component: ShoppingPages,
+      meta: {
+        showFooter: true
+      }
     },
     {
       path: '/personal',
-      component: PersonalPages
+      component: PersonalPages,
+      meta: {
+        showFooter: true
+      }
     },
     {
       path: '/',

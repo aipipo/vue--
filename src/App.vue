@@ -1,10 +1,16 @@
 <template>
   <div class="app">
     <router-view />
+    <FooterNav v-if="$route.meta.showFooter"/>
   </div>
 </template>
 <script>
-export default {}
+import FooterNav from './components/FooterNav/FooterNav'
+export default {
+  components: {
+    FooterNav
+  }
+}
 </script>
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   @import './common/stylus/mixins.styl'
