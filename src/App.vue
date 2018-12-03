@@ -7,6 +7,9 @@
 <script>
 import FooterNav from './components/FooterNav/FooterNav'
 export default {
+  mounted () {
+    this.$store.dispatch('getNavData')
+  },
   components: {
     FooterNav
   }

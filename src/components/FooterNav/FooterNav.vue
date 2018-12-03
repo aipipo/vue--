@@ -47,11 +47,12 @@ export default {
   .footer
     position fixed
     bottom 0
+    z-index 1000
     display flex
     justify-content space-around
     width  100%
     height px2rem(70)
-    background-color #eee
+    background-color #fff
     font-size px2rem(20)
     > .active
       color red
