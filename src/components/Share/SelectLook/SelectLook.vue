@@ -1,4 +1,5 @@
 <template>
+
   <div class="selectLook">
       <div class="select_header">严选LOOK</div>
       <div class="select_img">
@@ -14,6 +15,7 @@
         {{yxLook.content}}
       </div>
   </div>
+
 </template>
 <script>
 export default {

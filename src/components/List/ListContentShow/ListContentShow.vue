@@ -2,7 +2,7 @@
   <div class="listContent">
     <div class="listframe">
       <div class="framImg">
-        <img :src="navList.wapBannerUrl" alt="">
+        <img v-lazy="navList.wapBannerUrl" :key="navList.wapBannerUrl" alt="">
       </div>
       <div class="framTitile">
         <span class="framtext">
@@ -13,7 +13,7 @@
         <ul class="list" >
           <li class="item" v-for="(subCate, index) in navList.subCateList" :key="index">
             <a href="javascript:;">
-              <img :src="subCate.wapBannerUrl" alt="">
+              <img v-lazy="subCate.wapBannerUrl" :key="subCate.wapBannerUrl" alt="">
               <span>{{subCate.name}}</span>
             </a>
           </li>

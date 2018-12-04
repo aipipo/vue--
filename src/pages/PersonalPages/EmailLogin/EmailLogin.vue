@@ -5,11 +5,11 @@
     </div>
     <div class="from1">
       <div class="input01">
-        <input type="text" placeholder="邮箱账号">
+        <input v-model="email" type="text" placeholder="邮箱账号">
       </div>
       <div class="input_hr"></div>
       <div class="input01">
-        <input type="text" placeholder="密码">
+        <input v-model="pwd" type="text" placeholder="密码">
       </div>
       <div class="input_hr"></div>
       <div class="input01">
@@ -20,7 +20,7 @@
 
     <div class="btn">
       <button class="btn_b1 active">
-        <span class="sp2">登录</span>
+        <span class="sp2" @click="login">登录</span>
       </button>
       <button class="btn_b1">
         <span class="sp2 on" @click="$router.replace('/personal')">其它登录方式</span>
@@ -29,8 +29,30 @@
   </div>
 </template>
 <script>
+import {MessageBox} from 'mint-ui'
 export default {
+  data () {
+    return {
+      email: '',
+      pwd: ''
+    }
+  },
+  computed: {
+    isRightPhone () {
+      return /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(this.email)
+    }
+  },
   methods: {
+    login () {
+      const {pwd} = this
+      if (!this.isRightPhone) {
+        return MessageBox.alert('必须指定正确的邮箱')
+      }else if (!/^\d{6}$/.test(pwd)) {
+        return MessageBox.alert('密码必须是6位数字')
+      }else{
+        this.$router.replace('/home')
+      }
+    },
     goto (path) {
       this.$router.push(path)
     }

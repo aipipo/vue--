@@ -4,7 +4,7 @@
       <span>更多精彩</span>
     </div>
     <div class="movetopic_content">
-      <div class="item" v-for="(item, index) in yxWeek" key="index">
+      <div class="item" v-for="(item, index) in yxWeek" :key="index">
         <img v-lazy="item.itemPicUrl" alt="">
         <p>{{item.title}}</p>
       </div>

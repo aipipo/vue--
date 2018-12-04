@@ -5,15 +5,15 @@
     </div>
     <div class="from1">
       <div class="input01">
-        <input type="text" placeholder="请输入手机号">
+        <input v-model="phone" type="text" placeholder="请输入手机号">
       </div>
       <div class="input_hr"></div>
       <div class="input01">
-        <input type="text" placeholder="请输入短信验证码">
+        <input v-model="code" type="text" placeholder="请输入短信验证码">
       </div>
       <div class="input_hr"></div>
       <div class="input01">
-        <input type="text" placeholder="遇到问题？">
+        <input type="text" disabled="disabled" placeholder="遇到问题？">
       </div>
       <div class="code">获取验证码</div>
       <div class="pwd">使用密码验证登录</div>
@@ -21,7 +21,7 @@
 
     <div class="btn">
       <button class="btn_b1 active">
-        <span class="sp2">登录</span>
+        <span class="sp2" @click.prevent="login">登录</span>
       </button>
       <button class="btn_b1">
         <span class="sp2 on" @click="$router.replace('/personal')">其它登录方式</span>
@@ -32,13 +32,36 @@
   </div>
 </template>
 <script>
-  export default {
-    methods: {
-      goto (path) {
-        this.$router.push(path)
+import {MessageBox} from 'mint-ui'
+export default {
+  data () {
+    return {
+      phone: '',
+      code: ''
+    }
+  },
+  computed: {
+    isRightPhone () {
+      return /^[1][3,4,5,7,8][0-9]{9}$/.test(this.phone)
+    }
+  },
+  methods: {
+
+    login () {
+      const {code} = this
+      if (!this.isRightPhone) {
+        return MessageBox.alert('必须指定正确的手机号')
+      }else if (!/^\d{6}$/.test(code)) {
+        return MessageBox.alert('验证必须是6位数字')
+      }else{
+        this.$router.replace('/home')
       }
+    },
+    goto (path) {
+      this.$router.push(path)
     }
   }
+}
 </script>
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   @import '../../../common/stylus/mixins.styl'
@@ -76,6 +99,7 @@
       .input01
         input
           border 0
+          background-color transparent
           outline none
           cyrsor pointer
           width 100%
@@ -120,5 +144,6 @@
 
         text-align center
         font-size px2rem(18)
+
 
 </style>

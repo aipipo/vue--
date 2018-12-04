@@ -3,7 +3,7 @@
   <div class="shareContent">
 
     <div class="share_cont">
-        <Bann  er :banner="shareData.banner"/>
+        <Banner :banner="shareData.banner"/>
         <HeaderList :column="shareData.column"/>
         <DivLine />
         <Recommend :data="shareData.recommend"/>
